@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">MyAppTest</string>
+    <string name="directions">Choose a number between 1 and 100. \nYou have 5 chances to pick the number I have generated for you. \nGood luck!!</string>
     <String name = "start">Start</String>
 </resources>
