@@ -1,12 +1,13 @@
 package com.example.juanalvaropupo.myapptest;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class MainTest extends AppCompatActivity {
 
@@ -49,17 +50,50 @@ public class MainTest extends AppCompatActivity {
 
      */
 
-
-
+    private Button startButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_test);
 
-        ButterKnife.bind(this);
-    }
+        startButton = findViewById(R.id.start_button);
 
+        setListener();
+//        startGame();
+    }
+    private void setListener() {
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startGame();
+            }
+        });
+    }
+        @Override
+        public void onBackPressed() {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Are you sure you want to exit?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            MainTest.this.finish();
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+
+        }
+    private void startGame(){
+        Intent playGame = new Intent(this, GameActivity.class);
+        playGame.putExtra("SETWHICHVIEW", 3);
+        startActivity(playGame);
+    }
 
     }
 
