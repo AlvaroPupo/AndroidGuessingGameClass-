@@ -1,5 +1,6 @@
 package com.example.juanalvaropupo.myapptest;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -28,7 +29,6 @@ public class GameActivity extends AppCompatActivity {
 
         setListener();
     }
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -51,24 +51,17 @@ public class GameActivity extends AppCompatActivity {
             }
         });
     }
-
     private void checkGuess(int userGuess) {
 
         if (userGuess == generatedNumber) {
             //TODO - Create intent to go to winning activity - handle winning
-            clueTextview.setText(getString(R.string.win_message)
-                    + getString(R.string.again_message));
-            clueTextview.setVisibility(View.VISIBLE);
-            guess.setText("");
-            numberOfGuesses = 0;
+            Intent results = new Intent(this, ResultsActivity.class);
+            startActivity(results);
 
         } else if (numberOfGuesses == MAX_GUESS_COUNT) {
             //TODO - Create intent to go to winning activity - handle out of chances
-            clueTextview.setText(getString(R.string.run_out_of_chances_message) + generatedNumber
-                    + getString(R.string.again_message));
-            clueTextview.setVisibility(View.VISIBLE);
-            guess.setText("");
-            numberOfGuesses = 0;
+            Intent results = new Intent(this, ResultsActivity.class);
+            startActivity(results);
 
         } else if (userGuess > generatedNumber) {
             clueTextview.setText(R.string.higher_message);

@@ -60,7 +60,6 @@ public class MainTest extends AppCompatActivity {
         startButton = findViewById(R.id.start_button);
 
         setListener();
-//        startGame();
     }
     private void setListener() {
         startButton.setOnClickListener(new View.OnClickListener() {
