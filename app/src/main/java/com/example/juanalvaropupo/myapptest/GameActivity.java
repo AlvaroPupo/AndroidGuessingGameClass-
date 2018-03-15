@@ -56,32 +56,31 @@ public class GameActivity extends AppCompatActivity {
 
         if (userGuess == generatedNumber) {
             //TODO - Create intent to go to winning activity - handle winning
-            clueTextview.setText("you guessed the correct number!!"
-                    + " Want to play again?");
+            clueTextview.setText(getString(R.string.win_message)
+                    + getString(R.string.again_message));
             clueTextview.setVisibility(View.VISIBLE);
             guess.setText("");
             numberOfGuesses = 0;
 
         } else if (numberOfGuesses == MAX_GUESS_COUNT) {
             //TODO - Create intent to go to winning activity - handle out of chances
-            clueTextview.setText("Sorry, you have ran out of chances. The correct number was: " + generatedNumber
-                    + " Want to play again?");
+            clueTextview.setText(getString(R.string.run_out_of_chances_message) + generatedNumber
+                    + getString(R.string.again_message));
             clueTextview.setVisibility(View.VISIBLE);
             guess.setText("");
             numberOfGuesses = 0;
 
         } else if (userGuess > generatedNumber) {
-            clueTextview.setText("Your number is too high!");
+            clueTextview.setText(R.string.higher_message);
             clueTextview.setVisibility(View.VISIBLE);
             guess.setText("");
             numberOfGuesses++;
 
         } else if (userGuess < generatedNumber) {
-            clueTextview.setText("Your number is too low");
+            clueTextview.setText(R.string.lower_message);
             clueTextview.setVisibility(View.VISIBLE);
             guess.setText("");
             numberOfGuesses++;
-
         }
     }
 }
