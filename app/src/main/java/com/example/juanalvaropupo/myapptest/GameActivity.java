@@ -16,7 +16,6 @@ public class GameActivity extends AppCompatActivity {
     private EditText guess;
     private int generatedNumber;
     private int numberOfGuesses = 0;
-    private int MAX_GUESS_COUNT = 4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +28,7 @@ public class GameActivity extends AppCompatActivity {
 
         setListener();
     }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -51,29 +51,37 @@ public class GameActivity extends AppCompatActivity {
             }
         });
     }
+
     private void checkGuess(int userGuess) {
 
+        int MAX_GUESS_COUNT = 4;
         if (userGuess == generatedNumber) {
             //TODO - Create intent to go to winning activity - handle winning
-            Intent results = new Intent(this, ResultsActivity.class);
-            startActivity(results);
+            Intent win = new Intent(this, ResultsActivity.class);
+            win.putExtra("generatedNumber", generatedNumber);
+            win.putExtra("userGuess", userGuess);
+            startActivity(win);
 
         } else if (numberOfGuesses == MAX_GUESS_COUNT) {
             //TODO - Create intent to go to winning activity - handle out of chances
-            Intent results = new Intent(this, ResultsActivity.class);
-            startActivity(results);
+            Intent lose = new Intent(this, ResultsActivity.class);
+            lose.putExtra("generatedNumber", generatedNumber);
+            lose.putExtra("userGuess", userGuess);
+            startActivity(lose);
+        }
+            if (userGuess > generatedNumber) {
+                clueTextview.setText(R.string.higher_message);
+                clueTextview.setVisibility(View.VISIBLE);
+                guess.setText("");
+                numberOfGuesses++;
 
-        } else if (userGuess > generatedNumber) {
-            clueTextview.setText(R.string.higher_message);
-            clueTextview.setVisibility(View.VISIBLE);
-            guess.setText("");
-            numberOfGuesses++;
+            } else if (userGuess < generatedNumber) {
+                clueTextview.setText(R.string.lower_message);
+                clueTextview.setVisibility(View.VISIBLE);
+                guess.setText("");
+                numberOfGuesses++;
 
-        } else if (userGuess < generatedNumber) {
-            clueTextview.setText(R.string.lower_message);
-            clueTextview.setVisibility(View.VISIBLE);
-            guess.setText("");
-            numberOfGuesses++;
+
+            }
         }
     }
-}

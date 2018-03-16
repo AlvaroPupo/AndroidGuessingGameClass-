@@ -7,11 +7,11 @@
     tools:context="com.example.juanalvaropupo.myapptest.ResultsActivity">
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="64dp"
+        android:id="@+id/yes_button"
+        android:layout_width="105dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="44dp"
+        android:layout_marginStart="48dp"
         android:backgroundTint="@android:color/holo_green_dark"
         android:text="Yes"
         android:textColor="@android:color/black"
@@ -27,12 +27,14 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="You have won!!"
+        android:textAlignment="center"
         android:textColor="?attr/colorControlActivated"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/results_image"
+        app:layout_constraintBottom_toTopOf="@+id/winner_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/again_edittext"
@@ -42,38 +44,56 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="Would you like to play again?"
-        android:textColor="?android:attr/colorPrimary"
+        android:textColor="?android:attr/colorPressedHighlight"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/no_button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/results_image"
+        android:id="@+id/winner_image"
         android:layout_width="wrap_content"
         android:layout_height="300dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="40dp"
         android:layout_marginEnd="36dp"
         android:layout_marginStart="8dp"
         android:adjustViewBounds="true"
         android:scaleType="fitStart"
         app:layout_constraintBottom_toTopOf="@+id/again_edittext"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintHorizontal_bias="0.425"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/thumb" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:id="@+id/no_button"
+        android:layout_width="107dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="44dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:backgroundTint="@color/colorAccent"
         android:text="No"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.608"
-        app:layout_constraintStart_toEndOf="@+id/button" />
+        app:layout_constraintHorizontal_bias="0.629"
+        app:layout_constraintStart_toEndOf="@+id/yes_button" />
+
+    <ImageView
+        android:id="@+id/loser_image"
+        android:layout_width="287dp"
+        android:layout_height="281dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.641"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/winner_image"
+        app:layout_constraintVertical_bias="0.066"
+        app:srcCompat="@drawable/losing_sad_face" />
 </android.support.constraint.ConstraintLayout>
