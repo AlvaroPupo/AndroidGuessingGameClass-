@@ -1,9 +1,11 @@
 package com.example.juanalvaropupo.myapptest;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,6 +23,7 @@ public class ResultsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_results);
 
         winMessage = findViewById(R.id.winning_edittext);
@@ -47,23 +50,22 @@ public class ResultsActivity extends AppCompatActivity {
         no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
-               System.exit(0);
-
+            onBackPressed();
             }
         });
         yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                android.os.Process.killProcess(android.os.Process.myPid());
             }
         });
     }
 
     @Override
     public void onBackPressed() {
-        mainTestClass = new Intent(this, MainTest.class);
-        startActivity(mainTestClass);
+        Intent intent = new Intent(this, MainTest.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
     public void show_winning_screen() {

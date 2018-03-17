@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/main_test_background"
     tools:context="com.example.juanalvaropupo.myapptest.GameActivity">
 
     <EditText
@@ -17,8 +18,10 @@
         android:hint="Number between 1 - 100"
         android:inputType="number"
         android:maxLength="3"
+        android:singleLine="false"
         android:textAlignment="center"
-        android:textColor="@android:color/holo_blue_bright"
+        android:textColor="@color/cardview_light_background"
+        android:textColorHighlight="@color/cardview_light_background"
         app:layout_constraintBottom_toTopOf="@+id/submit_guess_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
@@ -52,7 +55,7 @@
         android:layout_marginStart="8dp"
         android:text="Higher"
         android:textAlignment="center"
-        android:textColor="@android:color/holo_green_dark"
+        android:textColor="@color/cardview_light_background"
         android:textSize="30sp"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/guess_edittext"
@@ -68,7 +71,7 @@
         android:layout_marginStart="8dp"
         android:backgroundTint="@color/cardview_shadow_start_color"
         android:text="Submit"
-        android:textColor="?android:attr/colorError"
+        android:textColor="@android:color/background_light"
         android:textColorHighlight="@android:color/holo_purple"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

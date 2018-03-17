@@ -2,6 +2,7 @@ package com.example.juanalvaropupo.myapptest;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -57,9 +58,10 @@ public class MainTest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_test);
 
-        startButton = findViewById(R.id.start_button);
+            startButton = findViewById(R.id.start_button);
 
-        setListener();
+            setListener();
+
     }
     private void setListener() {
         startButton.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +88,6 @@ public class MainTest extends AppCompatActivity {
                     });
             AlertDialog alert = builder.create();
             alert.show();
-
         }
     private void startGame(){
         Intent playGame = new Intent(this, GameActivity.class);

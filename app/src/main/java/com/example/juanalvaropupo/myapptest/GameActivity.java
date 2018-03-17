@@ -1,15 +1,19 @@
 package com.example.juanalvaropupo.myapptest;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class GameActivity extends AppCompatActivity {
+import java.util.InputMismatchException;
+
+public class GameActivity extends Activity {
 
     private TextView clueTextview;
     private Button guessButton;
@@ -20,6 +24,7 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_game);
 
         clueTextview = findViewById(R.id.clue_textview);
@@ -39,15 +44,17 @@ public class GameActivity extends AppCompatActivity {
         guessButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int userGuess = Integer.parseInt(guess.getText().toString());
-                if (userGuess > 100) {
-                    Toast.makeText(GameActivity.this, "Enter a number between 1 - 100", Toast.LENGTH_LONG).show();
+
+                    int userGuess = Integer.parseInt(guess.getText().toString());
+                    if (userGuess > 100) {
+                        Toast.makeText(GameActivity.this, "Enter a number between 1 - 100", Toast.LENGTH_LONG).show();
 //                    clueTextview.setText("Enter a number between 1 - 100");
 //                    clueTextview.setVisibility(View.VISIBLE);
-                    guess.setText("");
-                } else {
-                    checkGuess(userGuess);
-                }
+                        guess.setText("");
+//                    else if (userGuess)
+                    } else {
+                        checkGuess(userGuess);
+                    }
             }
         });
     }
