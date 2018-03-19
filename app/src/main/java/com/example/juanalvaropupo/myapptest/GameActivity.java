@@ -11,8 +11,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.InputMismatchException;
-
 public class GameActivity extends Activity {
 
     private TextView clueTextview;
@@ -58,7 +56,6 @@ public class GameActivity extends Activity {
             }
         });
     }
-
     private void checkGuess(int userGuess) {
 
         int MAX_GUESS_COUNT = 4;

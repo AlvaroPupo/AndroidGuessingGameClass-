@@ -1,6 +1,5 @@
 package com.example.juanalvaropupo.myapptest;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,7 +17,6 @@ public class ResultsActivity extends AppCompatActivity {
     private Button yes;
     private Button no;
     private int GeneratedNumber;
-    private Intent mainTestClass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +31,6 @@ public class ResultsActivity extends AppCompatActivity {
         no = findViewById(R.id.no_button);
 
         Bundle bundle = getIntent().getExtras();
-        int number_OfGuesses = bundle.getInt("numberOfGuesses");
         GeneratedNumber = bundle.getInt("generatedNumber");
         int UserGuess = bundle.getInt("userGuess");
 
@@ -43,14 +40,14 @@ public class ResultsActivity extends AppCompatActivity {
         } else {
             show_losing_screen();
         }
-            setListener();
+        setListener();
     }
 
     private void setListener() {
         no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            onBackPressed();
+                onBackPressed();
             }
         });
         yes.setOnClickListener(new View.OnClickListener() {
@@ -70,24 +67,19 @@ public class ResultsActivity extends AppCompatActivity {
 
     public void show_winning_screen() {
 
-            winMessage.setText(getString(R.string.win_message));
-            winMessage.setVisibility(View.VISIBLE);
-        }
-    public void show_losing_screen(){
+        winMessage.setText(getString(R.string.win_message));
+        winMessage.setVisibility(View.VISIBLE);
+    }
 
-        winMessage.setText(getString(R.string.run_out_of_chances_message)  +  GeneratedNumber );
+    public void show_losing_screen() {
+
+        winMessage.setText(getString(R.string.run_out_of_chances_message) + GeneratedNumber);
         image_winner.setVisibility(View.INVISIBLE);
         image_loser.setVisibility(View.VISIBLE);
     }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
-
 }
+
+//    Add Image -
+
+//    resultImageview.setImageDrawable(getDrawable(R.Drawable.losingsadface));
+//    resultImageview.setImageResource(R.Drawable.losingsadface);
