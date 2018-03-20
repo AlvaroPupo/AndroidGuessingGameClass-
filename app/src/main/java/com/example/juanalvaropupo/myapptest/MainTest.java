@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainTest extends AppCompatActivity {
 
@@ -97,7 +98,6 @@ public class MainTest extends AppCompatActivity {
         playGame.putExtra("SETWHICHVIEW", 3);
         startActivity(playGame);
     }
-
 }
 
 

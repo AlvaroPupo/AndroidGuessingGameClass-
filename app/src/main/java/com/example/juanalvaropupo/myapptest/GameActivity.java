@@ -2,7 +2,6 @@ package com.example.juanalvaropupo.myapptest;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -14,10 +13,15 @@ import android.widget.Toast;
 public class GameActivity extends Activity {
 
     private TextView clueTextview;
+    private TextView Guess1;
+    private TextView Guess2;
+    private TextView Guess3;
+    private TextView Guess4;
+    private TextView instructions;
     private Button guessButton;
     private EditText guess;
     private int generatedNumber;
-    private int numberOfGuesses = 0;
+    private int numberOfGuesses = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,11 @@ public class GameActivity extends Activity {
         clueTextview = findViewById(R.id.clue_textview);
         guessButton = findViewById(R.id.submit_guess_button);
         guess = findViewById(R.id.guess_edittext);
+        instructions = findViewById(R.id.instruction_textview);
+        Guess1 = findViewById(R.id.first_guess);
+        Guess2 = findViewById(R.id.second_guess);
+        Guess3 = findViewById(R.id.third_guess);
+        Guess4 = findViewById(R.id.fourth_guess);
 
         setListener();
     }
@@ -56,6 +65,7 @@ public class GameActivity extends Activity {
             }
         });
     }
+
     private void checkGuess(int userGuess) {
 
         int MAX_GUESS_COUNT = 4;
@@ -66,26 +76,50 @@ public class GameActivity extends Activity {
             win.putExtra("userGuess", userGuess);
             startActivity(win);
 
-        } else if (numberOfGuesses == MAX_GUESS_COUNT) {
+        } else if (numberOfGuesses > MAX_GUESS_COUNT) {
             //TODO - Create intent to go to winning activity - handle out of chances
             Intent lose = new Intent(this, ResultsActivity.class);
             lose.putExtra("generatedNumber", generatedNumber);
             lose.putExtra("userGuess", userGuess);
             startActivity(lose);
         }
-            if (userGuess > generatedNumber) {
-                clueTextview.setText(R.string.higher_message);
-                clueTextview.setVisibility(View.VISIBLE);
-                guess.setText("");
-                numberOfGuesses++;
+        if (userGuess > generatedNumber) {
+            clueTextview.setText(R.string.higher_message);
+            clueTextview.setVisibility(View.VISIBLE);
+            numberOfGuesses++;
+            typedNumbers();
 
-            } else if (userGuess < generatedNumber) {
-                clueTextview.setText(R.string.lower_message);
-                clueTextview.setVisibility(View.VISIBLE);
-                guess.setText("");
-                numberOfGuesses++;
+        } else if (userGuess < generatedNumber) {
+            clueTextview.setText(R.string.lower_message);
+            clueTextview.setVisibility(View.VISIBLE);
+            numberOfGuesses++;
+            typedNumbers();
+        }
+    }
 
+    private void typedNumbers (){
 
+            if (numberOfGuesses == 4){
+                instructions.setText("You have 2 chances");
+                String textInput = guess.getText().toString();
+                Guess3.setText(textInput);
+                Guess3.setVisibility(View.VISIBLE);
+
+            } else if (numberOfGuesses == 2){
+                instructions.setText("You have 4 chances");
+                String textInput = guess.getText().toString();
+                Guess1.setText(textInput);
+
+            } else if (numberOfGuesses == 3){
+                instructions.setText("You have 3 chances");
+                String textInput = guess.getText().toString();
+                Guess2.setText(textInput);
+
+            } else if (numberOfGuesses == 5){
+                instructions.setText("This is your last chance");
+                String textInput = guess.getText().toString();
+                Guess4.setText(textInput);
             }
+        guess.setText("");
         }
     }

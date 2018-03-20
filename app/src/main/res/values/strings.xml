@@ -3,7 +3,7 @@
     <string name="directions">Choose a number between 1 and 100. You have 5 chances to pick the number I have generated for you. Good luck!!</string>
     <string name="start">Start</string>
     <string name="win_message">you guessed the correct number!!</string>
-    <string name="higher_message">Your number is too high!</string>
-    <string name="lower_message">Your number is too low</string>
+    <string name="higher_message">Your number is too high!!</string>
+    <string name="lower_message">Your number is too low!!</string>
     <string name="run_out_of_chances_message">Sorry, you have ran out of chances. The correct number was: </string>
 </resources>
